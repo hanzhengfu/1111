@@ -123,8 +123,7 @@ if ($.isNode()) {
 
 !(async () => {
   for (let i = 0; i < 10; i++) {  
-  await allgo();//
-  console.log(`\n\n===== 执行等待时间 ${task.data.treasureBox.timeInterval} ms ===== `);
+  await allgo();
   await $.wait(3000);
   }
 })()
