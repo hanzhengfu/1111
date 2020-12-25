@@ -157,7 +157,7 @@ function allgo() {
      else if (i == 12){
        if ( K < qqreadbdArr.length - 1) {
               K += 1;
-              all2();
+              allgo();
 }    else if (K == qqreadbdArr.length - 1) {
               showmsg(); // 通知
               $.done();
