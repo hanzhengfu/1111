@@ -120,11 +120,12 @@ if ($.isNode()) {
 }
 
 
+//次数设定20分钟执行72次,yml设置零点执行
 
 !(async () => {
-  for (let i = 0; i < 10; i++) {  
+  for (let i = 0; i < 72; i++) {
   await allgo();
-  await $.wait(3000);
+  await $.wait(1200000);
   }
 })()
 
