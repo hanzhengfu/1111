@@ -202,7 +202,7 @@ task.data.user.amount >= 100000){
      else if (i == 12){
        if ( K < qqreadbdArr.length - 1) {
               K += 1;
-              all();
+              all2();
 }    else if (K == qqreadbdArr.length - 1) {
               showmsg(); // 通知
               $.done();
