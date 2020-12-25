@@ -133,7 +133,6 @@ if ($.isNode()) {
 })()
 
 
-
 function all() {
   qqreadbodyVal = qqreadbdArr[K];
   qqreadtimeurlVal = qqreadtimeurlArr[K];
@@ -214,7 +213,9 @@ task.data.user.amount >= 100000){
       );
     })(i);
   }
-} //执行开宝箱
+}
+
+//执行开宝箱
 
 
 
