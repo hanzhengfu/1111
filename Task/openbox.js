@@ -122,7 +122,7 @@ if ($.isNode()) {
 
 
 !(async () => {
-  
+
   await all();//开宝箱
   await qqreadtask();//treasureBox需要前面先有函数
   //await $.wait(task.data.treasureBox.timeInterval);
@@ -130,7 +130,6 @@ if ($.isNode()) {
   await $.wait(task.data.treasureBox.timeInterval)
   await all();//宝箱
 };
- 
   if (task.data&&task.data.treasureBox.timeInterval>=5000) {
   await $.wait(task.data.treasureBox.timeInterval)
   await all();//宝箱
@@ -153,7 +152,7 @@ function all() {
      else if (i == 2){
 
         qqreadtask();// 任务列表
-        qqreadtrack();
+        
 
 }
 
