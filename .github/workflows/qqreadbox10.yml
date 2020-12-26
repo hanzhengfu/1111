@@ -4,7 +4,7 @@
 name: 开宝箱方案3:计时10min执行
 
 on:
-  workflow_dispatc
+  workflow_dispatch:
   schedule:
      - cron: '* */6 * * *'
   watch:
@@ -36,7 +36,7 @@ jobs:
         if: env.QQREAD_TIMEHD
         run: |
           cd ~/JavaScript
-          node Task/qqread10.js
+          node Task/qqreads.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
