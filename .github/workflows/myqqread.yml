@@ -6,7 +6,7 @@ name: 开宝箱方案2:计时执行
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0 8 * * *'
+     - cron: '* */6 * * *'
   watch:
     types: started
 
