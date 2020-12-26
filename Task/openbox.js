@@ -122,25 +122,18 @@ if ($.isNode()) {
 
 
 !(async () => {
-  await all
-  let nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000);
-  
-  //await all();//开宝箱
-  //await qqreadtask();//treasureBox需要前面先有函数
-  //await $.wait(task.data.treasureBox.timeInterval);
-
-  if (nowTimes.getHours() === 0 && (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 40))
-  {await qqreadtrack()};//更新
+  await all;
+  await qqreadtrack();//更新
 
   await qqreadtask();//任务列表
   if (task.data&&task.data.treasureBox.timeInterval<=5000) {
     await $.wait(task.data.treasureBox.timeInterval)
     await all();//宝箱
-  }
+  };
   if (task.data&&task.data.treasureBox.timeInterval>=5000) {
     await $.wait(task.data.treasureBox.timeInterval)
     await all();//宝箱
-  }
+  };
 
 
 
