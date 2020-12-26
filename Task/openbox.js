@@ -122,12 +122,9 @@ if ($.isNode()) {
 
 
 !(async () => {
-  await qqreadtrack()
   await qqreadtask();//treasureBox需要前面先有函数
   await $.wait(task.data.treasureBox.timeInterval);
   await all();//开宝箱
-
-
 
 })()
 
@@ -142,7 +139,9 @@ function all() {
           if (i == 0)
               qqreadinfo(); // 用户名
      else if (i == 2){
+        
         qqreadtask();// 任务列表
+        qqreadtrack();
 
 }
 
