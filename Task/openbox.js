@@ -123,8 +123,6 @@ if ($.isNode()) {
 
 !(async () => {
   await all;
-  await qqreadtrack();//更新
-
   await qqreadtask();//任务列表
   if (task.data&&task.data.treasureBox.timeInterval<=5000) {
     await $.wait(task.data.treasureBox.timeInterval)
