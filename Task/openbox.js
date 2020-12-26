@@ -125,9 +125,7 @@ if ($.isNode()) {
 
   await all();//开宝箱
   await qqreadtask();//treasureBox需要前面先有函数
-  if (task.data&&task.data.treasureBox.timeInterval<=5000) {
-  await $.wait(task.data.treasureBox.timeInterval)
-  await all();//宝箱
+  await $.wait(task.data.treasureBox.timeInterval);
 };
  /*
   if (task.data&&task.data.treasureBox.timeInterval<=5000) {
