@@ -19,7 +19,7 @@ const logs = 0; // 0为关闭日志，1为开启
 const notifyInterval = 3;
 // 0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次
 
-const dd = 2; // 单次任务延迟,默认1秒
+const dd = 5; // 单次任务延迟,默认1秒
 const TIME = 30; // 单次时长上传限制，默认5分钟
 const maxtime = 12; // 每日上传时长限制，默认12小时
 const wktimess = 1200; // 周奖励领取标准，默认1200分钟
@@ -122,16 +122,19 @@ if ($.isNode()) {
 
 
 !(async () => {
-  await all;
-  await qqreadtask();//任务列表
+  
+  await all();//开宝箱
+  await qqreadtask();//treasureBox需要前面先有函数
+  //await $.wait(task.data.treasureBox.timeInterval);
   if (task.data&&task.data.treasureBox.timeInterval<=5000) {
-    await $.wait(task.data.treasureBox.timeInterval)
-    await all();//宝箱
-  };
+  await $.wait(task.data.treasureBox.timeInterval)
+  await all();//宝箱
+};
+ 
   if (task.data&&task.data.treasureBox.timeInterval>=5000) {
-    await $.wait(task.data.treasureBox.timeInterval)
-    await all();//宝箱
-  };
+  await $.wait(task.data.treasureBox.timeInterval)
+  await all();//宝箱
+};
 
 
 
