@@ -124,7 +124,7 @@ if ($.isNode()) {
 
 !(async () => {
   for (let i = 0; i < 18; i++) {
-  await allgo();
+  await all();
   await $.wait(1200000);
   }
 
