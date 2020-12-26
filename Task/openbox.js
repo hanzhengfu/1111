@@ -122,9 +122,10 @@ if ($.isNode()) {
 
 
 !(async () => {
+  await all();//开宝箱
   await qqreadtask();//treasureBox需要前面先有函数
   await $.wait(task.data.treasureBox.timeInterval);
-  await all();//开宝箱
+  
 
 })()
 
