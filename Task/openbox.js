@@ -1,3 +1,5 @@
+//方案2 根据第一个账号的开宝箱时间延时 执行先开一次 然后在延时 再开
+
 const jsname = "企鹅读书";
 const $ = Env(jsname);
 $.idx = ($.idx = ($.getval('qeSuffix') || '1') - 1) > 0 ? ($.idx + 1 + '') : ''; // 账号扩展字符
@@ -17,7 +19,7 @@ const logs = 0; // 0为关闭日志，1为开启
 const notifyInterval = 3;
 // 0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次
 
-const dd = 1; // 单次任务延迟,默认1秒
+const dd = 5; // 单次任务延迟,默认1秒
 const TIME = 30; // 单次时长上传限制，默认5分钟
 const maxtime = 12; // 每日上传时长限制，默认12小时
 const wktimess = 1200; // 周奖励领取标准，默认1200分钟
@@ -120,50 +122,16 @@ if ($.isNode()) {
 
 
 !(async () => {
-  await all2();//抓取信息 不开宝箱
-  await qqreadtask();	//treasureBox需要前面先有函数
-  console.log(`\n\n===== 执行等待时间 ${task.data.treasureBox.timeInterval} ms ===== `);
+  await qqreadtrack()
   await qqreadtask();//treasureBox需要前面先有函数
   await $.wait(task.data.treasureBox.timeInterval);
-  await all2();//最后执行
+  await all();//开宝箱
 
 
 
 })()
 
-
 function all() {
-  qqreadbodyVal = qqreadbdArr[K];
-  qqreadtimeurlVal = qqreadtimeurlArr[K];
-  qqreadtimeheaderVal = qqreadtimehdArr[K];
-  for (let i = 0; i < 13; i++) {
-    (function (i) {
-      setTimeout(
-        function () {
-          if (i == 0)
-              qqreadinfo(); // 用户名
-     else if (i == 2){
-        qqreadtask();// 任务列表
-
-}
-
-     else if (i == 12){
-       if ( K < qqreadbdArr.length - 1) {
-              K += 1;
-              all();
-}    else if (K == qqreadbdArr.length - 1) {
-              showmsg(); // 通知
-              $.done();
-  }
- }
-},
-
-        (i + 1) * dd * 1000
-      );
-    })(i);
-  }
-}
-function all2() {
   qqreadbodyVal = qqreadbdArr[K];
   qqreadtimeurlVal = qqreadtimeurlArr[K];
   qqreadtimeheaderVal = qqreadtimehdArr[K];
@@ -200,7 +168,7 @@ task.data.user.amount >= 100000){
      else if (i == 12){
        if ( K < qqreadbdArr.length - 1) {
               K += 1;
-              all2();
+              all();
 }    else if (K == qqreadbdArr.length - 1) {
               showmsg(); // 通知
               $.done();
@@ -214,7 +182,24 @@ task.data.user.amount >= 100000){
   }
 }
 
-//执行开宝箱
+// 更新
+function qqreadtrack() {
+  return new Promise((resolve, reject) => {
+    const body = qqreadbodyVal.replace(new RegExp(/"dis":[0-9]{13}/),`"dis":${new Date().getTime()}`)
+    const toqqreadtrackurl = {
+      url: "https://mqqapi.reader.qq.com/log/v4/mqq/track",
+      headers: JSON.parse(qqreadtimeheaderVal),
+   body: body,
+      timeout: 60000,
+    };
+    $.post(toqqreadtrackurl, (error, response, data) => {
+      if (logs) $.log(`${jsname}, 更新: ${data}`);
+      track = JSON.parse(data);
+	 tz += `【数据更新】:更新${track.msg}\n`;
+      resolve();
+    });
+  });
+}
 
 
 
