@@ -39,7 +39,8 @@ async function all() {
     qqreadtimeheaderVal = QQ_READ_COOKIES.qqreadtimeheaderVal[i];    
     O=(`${jsname+(i + 1)}`);     
     if (nowTimes.getHours() === 0 && (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 40)) 
-	{await qqreadtrack()};//更新   
+	{await qqreadtrack()};//更新 
+    await qqreadinfo();//用户名称
     await qqreadtask();//任务列表  
     if (task.data&&task.data.treasureBox.timeInterval<=5000) {
       await $.wait(task.data.treasureBox.timeInterval)
