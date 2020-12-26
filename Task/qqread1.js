@@ -15,13 +15,13 @@ let qqreadtimeheaderVal=`{"ywsession":"fhzh2ibkj8cftzkm1p5oa1er2qibhmkz","Cookie
 
 let QQ_READ_COOKIES = {
 "qqreadbodyVal": qqreadbodyVal.split('\n'),
-"qqreadtimeheaderVal":qqreadtimeheaderVal.split('\n')  
+"qqreadtimeheaderVal":qqreadtimeheaderVal.split('\n')
 }
 
 !(async () => {
 
   await all();
-  
+
 })()
     .catch((e) => {
       $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -32,16 +32,15 @@ let QQ_READ_COOKIES = {
 
 
 async function all() {
-  for (let i = 0; i < QQ_READ_COOKIES.qqreadbodyVal.length; i++) {	  
-	  let nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000);  
-    tz = '';    
+  for (let i = 0; i < QQ_READ_COOKIES.qqreadbodyVal.length; i++) {
+	  let nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000);
+    tz = '';
     qqreadbodyVal = QQ_READ_COOKIES.qqreadbodyVal[i];
-    qqreadtimeheaderVal = QQ_READ_COOKIES.qqreadtimeheaderVal[i];    
-    O=(`${jsname+(i + 1)}`);     
-    if (nowTimes.getHours() === 0 && (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 40)) 
-	{await qqreadtrack()};//更新 
-    await qqreadinfo();//用户名称
-    await qqreadtask();//任务列表  
+    qqreadtimeheaderVal = QQ_READ_COOKIES.qqreadtimeheaderVal[i];
+    O=(`${jsname+(i + 1)}`);
+    if (nowTimes.getHours() === 0 && (nowTimes.getMinutes() >= 0 && nowTimes.getMinutes() <= 40))
+	{await qqreadtrack()};//更新
+    await qqreadtask();//任务列表
     if (task.data&&task.data.treasureBox.timeInterval<=5000) {
       await $.wait(task.data.treasureBox.timeInterval)
       await qqreadbox();//宝箱
@@ -49,12 +48,12 @@ async function all() {
     if (task.data&&task.data.treasureBox.videoDoneFlag == 0) {
       await qqreadbox2();//宝箱翻倍
     }
-    await showmsg();//通知	
+    await showmsg();//通知
   }
 }
 function showmsg() {
   return new Promise(async resolve => {
-    let nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000);   
+    let nowTimes = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8*60*60*1000);
     $.msg(O, "", tz);
     resolve()
   })
