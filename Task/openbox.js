@@ -120,12 +120,11 @@ if ($.isNode()) {
 
 
 !(async () => {
-  await all();//抓取信息 不开宝箱
+  await all2();//抓取信息 不开宝箱
   await qqreadtask();	//treasureBox需要前面先有函数
   console.log(`\n\n===== 执行等待时间 ${task.data.treasureBox.timeInterval} ms ===== `);
   await qqreadtask();//treasureBox需要前面先有函数
   await $.wait(task.data.treasureBox.timeInterval);
-  await $.wait(1000);
   await all2();//最后执行
 
 
