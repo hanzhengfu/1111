@@ -19,8 +19,10 @@ let QQ_READ_COOKIES = {
 }
 
 !(async () => {
-
+  for (let i = 0; i < 7; i++) {
   await all();
+  await $.wait(600000);
+  }
 
 })()
     .catch((e) => {
