@@ -1,12 +1,12 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: 开宝箱方案2:计时20min执行
+name: 企鹅开宝箱[Cenbomin]
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '* */6 * * *'
+     - cron: '*/10 * * * *'
   watch:
     types: started
 
@@ -36,7 +36,7 @@ jobs:
         if: env.QQREAD_TIMEHD
         run: |
           cd ~/JavaScript
-          node Task/qqreads.js
+          node Task/qqread2.js
         env:
           
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
