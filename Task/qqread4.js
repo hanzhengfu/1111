@@ -9,9 +9,9 @@ const logs = 0;   //0为关闭日志，1为开启
 
 
 //在``里面填写，多账号换行
-let qqreadbodyVal=`{"common":{"appid":1450024394,"areaid":5,"qq_ver":"8.4.17","os_ver":"iOS 14.1","mp_ver":"0.38.2","mpos_ver":"1.21.0","brand":"iPhone","model":"iPhone 6s<iPhone8,1>","screenWidth":375,"screenHeight":667,"windowWidth":375,"windowHeight":618,"openid":"2010921461","guid":2010921461,"session":"uzbnxqduakyw3sfc1mzo4l89mkg3n62t","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookDetail_bottomBar_read_C","click2":"bookLib_freeBook_bookClick_C","route":"pages/book-read/index","refer":"pages/book-detail/index","options":{"bid":"34969712","cid":"1"},"dis":1609136220558,"ext6":68,"eventID":"bookRead_show_I","type":"shown","ccid":1,"bid":"34969712","bookStatus":0,"bookPay":0,"chapterStatus":0,"ext1":{"font":18,"bg":0,"pageMode":1},"from":"bookLib_freeBook_bookClick_C_0_34969712"}]}`
+let qqreadbodyVal=`{"common":{"appid":1450024394,"areaid":5,"qq_ver":"8.4.17","os_ver":"iOS 14.1","mp_ver":"0.38.2","mpos_ver":"1.21.0","brand":"iPhone","model":"iPhone 6s<iPhone8,1>","screenWidth":375,"screenHeight":667,"windowWidth":375,"windowHeight":618,"openid":"2010921461","guid":2010921461,"session":"ssfmh8170sg26ldzvadmkwawww8you28","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookDetail_bottomBar_read_C","click2":"bookLib_freeBook_bookClick_C","route":"pages/book-read/index","refer":"pages/book-detail/index","options":{"bid":"34794526","cid":"1"},"dis":1609137594947,"ext6":61,"eventID":"bookRead_show_I","type":"shown","ccid":1,"bid":"34794526","bookStatus":0,"bookPay":0,"chapterStatus":0,"ext1":{"font":18,"bg":0,"pageMode":1},"from":"bookLib_freeBook_bookClick_C_11_34794526"}]}`
 
-let qqreadtimeheaderVal=`{"ywsession":"uzbnxqduakyw3sfc1mzo4l89mkg3n62t","Cookie":"ywguid=2010921461;ywkey=ywGKAx5yNoM9;platform=ios;channel=mqqmina;mpVersion=0.38.2;qq_ver=8.4.17;os_ver=iOS 14.1;mpos_ver=1.21.0;platform=ios;openid=2010921461","Connection":"keep-alive","Content-Type":"application/json","Accept":"*/*","Host":"mqqapi.reader.qq.com","User-Agent":"QQ/8.4.17.638 CFNetwork/1197 Darwin/20.0.0","Referer":"https://appservice.qq.com/1110657249/0.38.2/page-frame.html","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br","mpversion":"0.38.2"}`
+let qqreadtimeheaderVal=`{"ywsession":"ssfmh8170sg26ldzvadmkwawww8you28","Cookie":"ywguid=2010921461;ywkey=ywGKAx5yNoM9;platform=ios;channel=mqqmina;mpVersion=0.38.2;qq_ver=8.4.17;os_ver=iOS 14.1;mpos_ver=1.21.0;platform=ios;openid=2010921461","Connection":"keep-alive","Content-Type":"application/json","Accept":"*/*","Host":"mqqapi.reader.qq.com","User-Agent":"QQ/8.4.17.638 CFNetwork/1197 Darwin/20.0.0","Referer":"https://appservice.qq.com/1110657249/0.38.2/page-frame.html","Accept-Language":"zh-cn","Accept-Encoding":"gzip, deflate, br","mpversion":"0.38.2"}`
 
 let QQ_READ_COOKIES = {
 "qqreadbodyVal": qqreadbodyVal.split('\n'),
@@ -49,7 +49,7 @@ async function all() {
       await qqreadbox();//宝箱
     }
     if (task.data&&task.data.treasureBox.timeInterval-600000<=5000) {
-	    await $.wait(task.data.treasureBox.timeInterval-600000)
+      await $.wait(task.data.treasureBox.timeInterval-600000)
       await qqreadbox2();//宝箱翻倍
     }
     await showmsg();//通知
