@@ -48,7 +48,8 @@ async function all() {
       await $.wait(task.data.treasureBox.timeInterval)
       await qqreadbox();//宝箱
     }
-    if (task.data&&task.data.treasureBox.videoDoneFlag == 0) {
+    if (task.data&&task.data.treasureBox.timeInterval-600000<=5000) {
+	    await $.wait(task.data.treasureBox.timeInterval-600000)
       await qqreadbox2();//宝箱翻倍
     }
     await showmsg();//通知
